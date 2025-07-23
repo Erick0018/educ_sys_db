@@ -1,12 +1,14 @@
 package com.erickjesus.educ_sys_db.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+@Document
 public class Student implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -16,6 +18,9 @@ public class Student implements Serializable {
     private String name;
     private String email;
     private Date birthDate;
+
+    public Student() {
+    }
 
     public Student(Integer id, String name, String email, Date birthDate) {
         this.id = id;
