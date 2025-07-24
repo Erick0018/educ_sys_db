@@ -14,7 +14,7 @@ public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String email;
     private Date birthDate;
@@ -22,18 +22,18 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(Integer id, String name, String email, Date birthDate) {
+    public Student(String id, String name, String email, Date birthDate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
