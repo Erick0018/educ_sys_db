@@ -2,16 +2,18 @@ package com.erickjesus.educ_sys_db.dto;
 
 import com.erickjesus.educ_sys_db.domain.Student;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 
-public class StudentDTO {
+public class StudentDTO implements Serializable {
+    @Serial
+    private final static long serialVersionUID = 1L;
 
     private String id;
     private String name;
     private String email;
     private Date birthDate;
-
-
 
     public StudentDTO(Student obj) {
         this.id = obj.getId();
