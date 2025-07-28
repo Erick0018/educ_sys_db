@@ -2,13 +2,13 @@ package com.erickjesus.educ_sys_db.resources;
 import com.erickjesus.educ_sys_db.domain.Student;
 import com.erickjesus.educ_sys_db.dto.StudentDTO;
 import com.erickjesus.educ_sys_db.services.StudentService;
+import jakarta.servlet.Servlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -29,6 +29,13 @@ public class StudentResources {
         Student obj = service.findById(id);
         StudentDTO studentDTO = new StudentDTO(obj);
         return ResponseEntity.ok().body(studentDTO);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> insert(@RequestBody StudentDTO obj) {
+        Student newStudent = service.insert(service.fromDTO(obj));
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
 }
