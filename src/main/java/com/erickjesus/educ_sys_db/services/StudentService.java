@@ -32,4 +32,10 @@ public class StudentService {
     public Student fromDTO(StudentDTO objDto) {
         return new Student(objDto.getId(), objDto.getName(), objDto.getEmail(), objDto.getBirthDate());
     }
+
+    public void delete(String id) {
+        findById(id);
+        repository.findById(id);
+    }
+
 }
