@@ -38,4 +38,15 @@ public class StudentService {
         repository.findById(id);
     }
 
+    public Student update(Student obj) {
+        Student newObj = new Student();
+        updateData(obj, newObj);
+        return repository.save(newObj);
+    }
+
+    public void updateData(Student obj, Student newObj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
+    }
+
 }
